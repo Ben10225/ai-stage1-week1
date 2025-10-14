@@ -93,14 +93,14 @@ def generate_product_ids_txt(products: List[Product]):
 
 
 # Task2 -> Create a file named best-products.txt and print product IDs with at least 1 review where average rating greater than 4.9
-def generate_best_products_txt(products: List[Product]):
+def generate_best_products_txt(products: List[Product]) -> None:
     best_products = [product["id"] for product in products if product["star"] == 5]
     with open("best-products.txt", "w") as f:
         f.write("\n".join(best_products))
 
 
 # Task3 -> Calculate the average price of ASUS PCs with Intel i5 processor. Just print it in the console.
-def calculate_average_price(products: List[Product]):
+def calculate_average_price(products: List[Product]) -> None:
     i5_prices = [p["price"] for p in products if "i5" in p["name"]]
 
     if i5_prices:
@@ -111,7 +111,7 @@ def calculate_average_price(products: List[Product]):
 
 
 # Task4 -> We want to use z-score to standardize the prices of ASUS PCs where you can treat parsed data in Task 1 as statistical population.
-def generate_z_score_csv(products: List[Product]):
+def generate_z_score_csv(products: List[Product]) -> None:
     prices = [p["price"] for p in products]
 
     mean_price = sum(prices) / len(prices)
@@ -137,7 +137,7 @@ def generate_z_score_csv(products: List[Product]):
 
 
 # 主程式
-def main():
+def main() -> None:
 
     base_url = "https://24h.pchome.com.tw"
 
@@ -171,4 +171,5 @@ def main():
     generate_z_score_csv(products)
 
 
-main()
+if __name__ == "__main__":
+    main()
